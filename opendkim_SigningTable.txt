@@ -1,0 +1,4 @@
+# Example Entries:
+#*@example.net mail._domainkey.example.net
+#*@example.org mail._domainkey.example.org
+
