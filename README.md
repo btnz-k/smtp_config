@@ -21,3 +21,12 @@ Written by BTNZ 2020
 
         ./smtp_config.sh -d
                 This will comment out any DKIM configuration in the postfix main.cf file.
+
+Todo:
+
+* validate user input for domain
+* validate postfix/opendkim configurations
+* extend to provide dmarc TXT record
+* enhance enable/disable functions to ensure all 4 configuration lines are present
+* verify at least one myhostname is present and uncommented in postfix/main.cf
+* check for postfix installation as a pre-flight check
