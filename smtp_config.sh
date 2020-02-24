@@ -3,16 +3,10 @@
 # Script to automate DKIM configuration
 #
 # DKIM CONFIGURATION SCRIPT
-#
-# THANKS TO:
-#       William Suthers III
-#       Greg Babonis
-#       EUGENE Labs Team
-#
 # Wanna know how to use this? run -h!!
 #
-# Written by Ellery Weber
-VERSION="1.0.2020.02.21"
+# Written by BTNZ
+VERSION="1.0.2020.02.24"
 
 # init vars
 DOMAIN=""
