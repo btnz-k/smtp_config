@@ -1,5 +1,7 @@
 SMTP CONF
+
 Written by BTNZ 2020
+
 1.0.2020.02.24
 
         Usage:
