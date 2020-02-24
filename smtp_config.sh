@@ -4,15 +4,10 @@
 #
 # DKIM CONFIGURATION SCRIPT
 #
-# THANKS TO:
-#       William Suthers III
-#       Greg Babonis
-#       EUGENE Labs Team
-#
 # Wanna know how to use this? run -h!!
 #
-# Written by Ellery Weber
-VERSION="1.0.2020.02.21"
+# Written by BTNZ
+VERSION="1.0.2020.02.24"
 
 # init vars
 DOMAIN=""
@@ -80,7 +75,7 @@ install_opendkim(){
         # test to make sure install was successful, else quit
         if [ -z $(command -v opendkim-genkey) ]; then
             printf "%s\n" " ${RED}[!] ******************************** ERROR! ******************************** [!]${NORMAL}" " ${RED}[!]${NORMAL} Installation seems to have been unsuccessful. Please manually install" " ${RED}[!]${NORMAL} opendkim and opendkim-tools (sudo apt-get install opendkim openkdim-tools) and try again."
-            printf "%s\n\n" " ${RED}[!] ******************************** ERROR! ******************************** [!]${NORMAL}"
+            printf "%s\n" " ${RED}[!] ******************************** ERROR! ******************************** [!]${NORMAL}"
             exit 1
         fi
 
@@ -109,10 +104,10 @@ install_opendkim(){
     else
 
         printf "%s\n" " ${RED}[!] ******************************** ERROR! ******************************** [!]${NORMAL}" " ${RED}[!]${NORMAL} OpenDKIM is already installed. If you wish to reinstall with baseline configs, please uninstall" " ${RED}[!]${NORMAL} opendkim manually and re-run this script with the -i option ( $0 -i )."
-        printf "%s\n\n" " ${RED}[!] ******************************** ERROR! ******************************** [!]${NORMAL}"
+        printf "%s\n" " ${RED}[!] ******************************** ERROR! ******************************** [!]${NORMAL}"
         exit 1
     fi
-    printf "%s\n\n" " ${CYAN}[+]${NORMAL} Installation Complete!"
+    printf "%s\n" " ${CYAN}[+]${NORMAL} Installation Complete!"
 }
 
 enable_opendkim(){
@@ -215,12 +210,12 @@ domain_opendkim(){
         #display the DNS entry
 
         printf "%s\n" " ${GREEN}[*] ******************************** INFO ******************************** [*]${NORMAL}" " ${GREEN}[*]${NORMAL} Please add the following as a TXT record in DNS. " " ${GREEN}[*]${NORMAL}" " ${GREEN}[*]${NORMAL} Host:          $DNSENTRY_HOST" " ${GREEN}[*]${NORMAL} Domain:        $DOMAIN" " ${GREEN}[*]${NORMAL} Record Type:   TXT" " ${GREEN}[*]${NORMAL} Content:       $DNSENTRY_DATA"
-        printf "%s\n\n" " ${GREEN}[*] ******************************** INFO ******************************** [*]${NORMAL}"
+        printf "%s\n" " ${GREEN}[*] ******************************** INFO ******************************** [*]${NORMAL}"
 
     else
 
         printf "%s\n" " ${RED}[!] ******************************** ERROR! ******************************** [!]${NORMAL}" " ${RED}[!]${NORMAL} DOMAIN has not been provided, and is required for this step. Please " " ${RED}[!]${NORMAL} re-run this script with the -D option include the domain ( $0 -D test.com)."
-        printf "%s\n\n" " ${RED}[!] ******************************** ERROR! ******************************** [!]${NORMAL}"
+        printf "%s\n" " ${RED}[!] ******************************** ERROR! ******************************** [!]${NORMAL}"
         exit 1
     fi
 }
@@ -236,7 +231,7 @@ printf "%s\n" "   ______  ____________    _________  _  ______" "  / __/  |/  /_
 # Check to see if user is root/sudo
 if [ "$EUID" -ne 0 ]; then
     printf "%s\n" " ${RED}[!] ******************************** ERROR! ******************************** [!]${NORMAL}" " ${RED}[!]${NORMAL} This script changes system configuration files, and must be run as root or with sudo."
-    printf "%s\n\n" " ${RED}[!] ******************************** ERROR! ******************************** [!]${NORMAL}"
+    printf "%s\n" " ${RED}[!] ******************************** ERROR! ******************************** [!]${NORMAL}"
     exit 1
 fi
 
@@ -254,14 +249,14 @@ if [ "$INSTALL" -eq "1" ]; then
     systemctl restart postfix
     systemctl restart opendkim
     # PostAllNote
-    printf "%s\n\n" " ${CYAN}[+]${NORMAL} Tasks complete. Happy phishing!"
+    printf "%s\n" " ${CYAN}[+]${NORMAL} Tasks complete. Happy phishing!"
     exit 0
 fi
 
 # Check to see if opendkim is installed
 if [ -z "$(command -v opendkim-genkey)" ]; then
     printf "%s\n" " ${RED}[!] ******************************** ERROR! ******************************** [!]${NORMAL}" " ${RED}[!]${NORMAL} OpenDKIM is required to run this script!"  " ${RED}[!]${NORMAL} Rerun this script ( $0 -i ) to install and configure OpenDKIM."
-    printf "%s\n\n" " ${RED}[!] ******************************** ERROR! ******************************** [!]${NORMAL}"
+    printf "%s\n" " ${RED}[!] ******************************** ERROR! ******************************** [!]${NORMAL}"
     exit 1
 fi
 
