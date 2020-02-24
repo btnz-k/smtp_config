@@ -6,7 +6,7 @@
 # Wanna know how to use this? run -h!!
 #
 # Written by BTNZ
-VERSION="1.0.2020.02.24.2"
+VERSION="1.0.2020.02.24.3"
 
 # init vars
 DOMAIN=""
@@ -86,13 +86,11 @@ install_opendkim(){
         mv "$OPENDKIM_CONF" "$OPENDKIM_CONF.old" 2>/dev/null
         # Pull down configuration file gist for OpenDKIM
         cp -f "$SCRIPTPATH/opendkim.conf" "$OPENDKIM_CONF"
-        #wget -q -O "$OPENDKIM_CONF" https://gist.githubusercontent.com/btnz-k/6e9cd09312dd4a2c13014c3d1a616651/raw/2893186a7b29f00e5cbef4b6e34d53ed38bc7215/opendkim.conf
 
         # move default $OPENDKIM_DEFAULT to .old
         mv "$OPENDKIM_DEFAULT" "$OPENDKIM_DEFAULT.old"
         # Pull down configuration file gist for OpenDKIM
         cp -f "$SCRIPTPATH/etc_default_opendkim" "$OPENDKIM_DEFAULT"
-        #wget -q -O "$OPENDKIM_DEFAULT" https://gist.githubusercontent.com/btnz-k/d419b863e9cc83bc717250920923c5b3/raw/5e6e1a8cb6aa390cfab6177a6e54123e80df97bc/etc_default_opendkim
 
         # make directory structure
         printf " ${CYAN}[+]${NORMAL} Creating OpenDKIM folders.\n"
@@ -105,9 +103,6 @@ install_opendkim(){
         cp -f "$SCRIPTPATH/opendkim_TrustedHosts" "$TRUSTEDHOSTS"
         cp -f "$SCRIPTPATH/opendkim_KeyTable" "$KEYTABLE"
         cp -f "$SCRIPTPATH/opendkim_SigningTable" "$SIGNINGTABLE"
-        #wget -q -O "$TRUSTEDHOSTS" https://gist.githubusercontent.com/btnz-k/f9cd276d06f6783c5d59bd2f29ed7fe8/raw/d5297a2631abeb5427a66cf4366290a0036024e3/opendkim_TrustedHosts
-        #wget -q -O "$KEYTABLE" https://gist.githubusercontent.com/btnz-k/5fe7ef9f458487b458a89bef613662b2/raw/4bb9ad9ac13fec2139ccaf86b97b8a4e9d1260b4/opendkim_KeyTable
-        #wget -q -O "$SIGNINGTABLE" https://gist.githubusercontent.com/btnz-k/3685cfe178812fcf60616b51c17306d9/raw/28927950f38bb0c49ba31cf5ee36b0780b837f47/opendkim_SigningTable
     else
 
         printf "%s\n" " ${RED}[!] ******************************** ERROR! ******************************** [!]${NORMAL}" " ${RED}[!]${NORMAL} OpenDKIM is already installed. If you wish to reinstall with baseline configs, please uninstall" " ${RED}[!]${NORMAL} opendkim manually and re-run this script with the -i option ( $0 -i )."
