@@ -1,9 +1,7 @@
-SMTP CONF
-
+# SMTP CONF
 Written by BTNZ 2020
 
-1.0.2020.02.24
-
+```text
         Usage:
             -h, -?                  Display this help message
             -D <domain.com>         Sets the domain to be configured.
@@ -21,6 +19,7 @@ Written by BTNZ 2020
 
         ./smtp_config.sh -d
                 This will comment out any DKIM configuration in the postfix main.cf file.
+```
 
 Todo:
 
