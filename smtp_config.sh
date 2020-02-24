@@ -4,10 +4,15 @@
 #
 # DKIM CONFIGURATION SCRIPT
 #
+# THANKS TO:
+#       William Suthers III
+#       Greg Babonis
+#       EUGENE Labs Team
+#
 # Wanna know how to use this? run -h!!
 #
-# Written by BTNZ
-VERSION="1.0.2020.02.24"
+# Written by Ellery Weber
+VERSION="1.0.2020.02.21"
 
 # init vars
 DOMAIN=""
@@ -137,7 +142,7 @@ enable_opendkim(){
         echo "non_smtpd_milters = inet:localhost:8892" >> "$POSTFIX_MAIN"
     fi
 
-    printf "%s\n" " ${CYAN}[+]${NORMAL} OpenDKIM has been enabled!"
+    printf "%s\n\n" " ${CYAN}[+]${NORMAL} OpenDKIM has been enabled!"
 }
 
 disable_opendkim(){
@@ -150,14 +155,14 @@ disable_opendkim(){
     # check to see if lines are present
     MILTERPRESENT=$(grep -F milter "$POSTFIX_MAIN")
     if [ ! -z "$MILTERPRESENT" ]; then
-        printf "%s\n" " ${CYAN}[+]${NORMAL} Configuration settings found, adding comment character for applicaable lines."
+        printf "%s\n" " ${CYAN}[+]${NORMAL} Configuration settings found, adding comment character for applicable lines."
         # ensure lines are commented out
         sed -i 's,^milter_protocol = 2,#milter_protocol = 2,g' "$POSTFIX_MAIN"
         sed -i 's,^milter_default_action = accept,#milter_default_action = accept,g' "$POSTFIX_MAIN"
         sed -i 's,^smtpd_milters = inet:localhost:8892,#smtpd_milters = inet:localhost:8892,g' "$POSTFIX_MAIN"
         sed -i 's,^non_smtpd_milters = inet:localhost:8892,#non_smtpd_milters = inet:localhost:8892,g' "$POSTFIX_MAIN"
     fi
-    printf "%s\n" " ${CYAN}[+]${NORMAL} OpenDKIM has been disabled."
+    printf "%s\n\n" " ${CYAN}[+]${NORMAL} OpenDKIM has been disabled."
 }
 
 domain_opendkim(){
@@ -249,7 +254,7 @@ if [ "$INSTALL" -eq "1" ]; then
     systemctl restart postfix
     systemctl restart opendkim
     # PostAllNote
-    printf "%s\n" " ${CYAN}[+]${NORMAL} Tasks complete. Happy phishing!"
+    printf "%s\n\n" " ${CYAN}[+]${NORMAL} Tasks complete. Happy phishing!"
     exit 0
 fi
 
