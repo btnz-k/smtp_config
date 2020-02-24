@@ -11,8 +11,8 @@ Written by BTNZ 2020
 
         Example:
         ./smtp_config.sh -D phish.com -e
-                This will configure DKIM with the domain phish.com( -D phish.com ), and will ensure the configuration settings
-                are correctly configured in the postfix and dkim configuration files.
+                This will configure DKIM with the domain phish.com( -D phish.com ), and will ensure the 
+                configuration settings are correctly configured in the postfix and dkim configs.
 
         ./smtp_config.sh -i
                 This will install OpenDKIM and set base configuration.
