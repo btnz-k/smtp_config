@@ -69,6 +69,9 @@ done
 
 # functions used
 install_opendkim(){
+    #TIMESTAMP var for old confs
+    TIMESTAMP=$(date +%Y%m%d_%H%M%S)
+
     # checking for already installed
     printf "%s\n" " ${CYAN}[+]${NORMAL} Installation flag set. Checking to see if OpenDKIM is installed."
     if [ -z "$(command -v opendkim-genkey)" ]; then
@@ -83,12 +86,12 @@ install_opendkim(){
 
         printf "%s\n" " ${CYAN}[+]${NORMAL} Pulling down base configurations for OpenDKIM."
         # copy default config to .old
-        mv "$OPENDKIM_CONF" "$OPENDKIM_CONF.old" 2>/dev/null
+        mv "$OPENDKIM_CONF" "$OPENDKIM_CONF.$TIMESTAMP.old" 2>/dev/null
         # Pull down configuration file gist for OpenDKIM
         cp -f "$SCRIPTPATH/opendkim.conf" "$OPENDKIM_CONF"
 
         # move default $OPENDKIM_DEFAULT to .old
-        mv "$OPENDKIM_DEFAULT" "$OPENDKIM_DEFAULT.old"
+        mv "$OPENDKIM_DEFAULT" "$OPENDKIM_DEFAULT.$TIMESTAMP.old" 2>/dev/null
         # Pull down configuration file gist for OpenDKIM
         cp -f "$SCRIPTPATH/etc_default_opendkim" "$OPENDKIM_DEFAULT"
 
