@@ -6,7 +6,7 @@
 # Wanna know how to use this? run -h!!
 #
 # Written by BTNZ
-VERSION="1.0.2020.02.24.3"
+VERSION="1.0.2020.03.05.1"
 
 # init vars
 DOMAIN=""
